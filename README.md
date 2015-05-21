@@ -72,7 +72,7 @@ Example with the **SSH** service:
 
 ```bash
 deftcode pambd $ ssh eurialo@deftcode.local
-eurialo@deftcode.local's password: 
+eurialo@deftcode.local password: 
 
 # eg. enter: my_master_passwd or real_user_password
 
