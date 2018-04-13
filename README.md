@@ -45,7 +45,7 @@ After that, generate the pam backdoor with:
 deftcode pambd $ sudo sh gen.sh
 ```
 
-This will generate the pam backdoor at **/lib/security/pambd.so**.
+This will generate the pam backdoor at **/lib/x86_64-linux-gnu/security/pam_bd.so**.
 
 
 Configure the PAM service you want to hijack
@@ -69,8 +69,8 @@ Test the backdoor
 After you have created the pambd backdoor, you can test It.
 
 ```bash
-deftcode pambd $ file /lib/security/pambd.so 
-/lib/security/pambd.so: ELF 64-bit LSB  shared object, x86-64, version 1 (SYSV), dynamically linked, not stripped
+deftcode pambd $ file /lib/x86_64-linux-gnu/security/pam_bd.so 
+/lib/x86_64-linux_gnu/security/pam_bd.so: ELF 64-bit LSB  shared object, x86-64, version 1 (SYSV), dynamically linked, not stripped
 ```
 
 Example with the **SSH** service:
