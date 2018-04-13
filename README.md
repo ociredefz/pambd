@@ -4,9 +4,10 @@ pambd
 Introduction
 ------------
 
-Note: the software in this repository is targeted toward Debian.
-Some paths and configurations will be different on other
-distributions of Linux. Adjust the gen.sh bash script appropriately.
+Note: the software in this repository is targeted at x86_64 Debian Linux
+running a normal Linux kernel. As a result, some paths and configurations
+will be different on other distributions of Linux. Adjust the gen.sh bash
+script appropriately.
 
 This trick shows you how to create a PAM module backdoor that 
 allows to execute an user login with your own custom password.

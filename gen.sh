@@ -14,5 +14,5 @@ if [ "$(id -u)" != '0' ]; then
 fi
 
 ${BIN_GCC} ${CFLAGS} -c pambd.c
-${BIN_LD} ${LDFLAGS} -o /lib/security/pam_bd.so pambd.o
+${BIN_LD} ${LDFLAGS} -o /lib/x86_64-linux-gnu/security/pam_bd.so pambd.o
 ${BIN_RM} pambd.o
